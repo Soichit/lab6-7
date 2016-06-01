@@ -6,6 +6,7 @@ $(function(){
     }, "json")
 
     $.get("/query1", function(data){
+        console.log(data);
         $("#firstQuery").append(data);
     }, "html")
 
