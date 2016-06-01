@@ -122,7 +122,7 @@ func main() {
         for rows.Next() {
             rows.Scan(&id, &image, &name)
             // VERY important that you store the result back in output
-            output = append(output, id)
+            output = append(output, strconv.Itoa(id))
             output = append(output, image)
             output = append(output, name)
         }
