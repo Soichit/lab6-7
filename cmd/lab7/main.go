@@ -81,7 +81,7 @@ func main() {
 		var image string
 		var name string //<--- ^^^^
 		var price []uint8
-		for price.Next() {
+		for rows.Next() {
 			// assign each of them, in order, to the parameters of rows.Scan.
 			// preface each variable with &
 			rows.Scan(&id, &image, &name, &price) // <--- EDIT THIS LINE
