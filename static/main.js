@@ -13,7 +13,7 @@ $(function(){
     $.get("/query2", function(data){
         console.log(data);
         objString = JSON.parse(data);
-        var json = JSON.parse(objString);
+        var json = JSON.stringify(eval("(" + objString.result[0] + ")"));
         console.log(objString);
         console.log(json);
         document.getElementById("foodName").innerHTML = "PIZZA";
