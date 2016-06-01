@@ -16,7 +16,7 @@ $(function(){
         var json = JSON.stringify(eval("(" + objString.result[0] + ")"));
         console.log(objString);
         console.log(json);
-        document.getElementById("foodName").innerHTML = "PIZZA";
+        document.getElementById("foodName").innerHTML = json.Name;
         
 
         var txt = '{"employees":[' +
