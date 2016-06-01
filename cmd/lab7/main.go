@@ -114,7 +114,28 @@ func main() {
             return
         }
         
+        output := make([][]string, 0)
+        
 
+    	// The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
+        var id int
+		var image string
+		var name string
+
+        for rows.Next() {
+            rows.Scan(&id, &image, &name)
+            // VERY important that you store the result back in output
+            array:= [3]string{id, image, name}
+            output = append(output, array)
+        }
+        */
+
+        //Finally, return your results to the user:
+    	c.JSON(http.StatusOK, gin.H{"result": output})
+
+
+
+        /*
         type Response1 struct {
 		    Id   int
 		    Image string
@@ -141,9 +162,10 @@ func main() {
 		    res1B, _ := json.Marshal(res1D)
 		    output = append(output, res1B)
         }
+        */
 
         //Finally, return your results to the user:
-    	c.JSON(http.StatusOK, gin.H{"result": output})
+    	//c.JSON(http.StatusOK, gin.H{"result": output})
   })
 
 
