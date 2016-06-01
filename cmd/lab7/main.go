@@ -97,33 +97,12 @@ func main() {
 
 
 	router.GET("/query2", func(c *gin.Context) {
-		table := "<table class='table'><thead><tr>"
-		// put your query here
-		rows, err := db.Query("SELECT name FROM food WHERE name = \"pizza\"") // <--- EDIT THIS LINE
+		rows, err := db.Query("SELECT name FROM food WHERE id = 1") // <--- EDIT THIS LINE
 		if err != nil {
 			// careful about returning errors to the user!
 			c.AbortWithError(http.StatusInternalServerError, err)
 		}
-		// foreach loop over rows.Columns, using value
-		cols, _ := rows.Columns()
-		if len(cols) == 0 {
-			c.AbortWithStatus(http.StatusNoContent)
-		}
-		for _, value := range cols {
-			table += "<th class='text-center'>" + value + "</th>"
-		}
-		// once you've added all the columns in, close the header
-		table += "</thead><tbody>"
-		var name string
-
-		// columns
-		for rows.Next() {
-			rows.Scan(&name) // put columns here prefaced with &
-			table += "<tr><td> + name + </td></tr>" // <--- EDIT THIS LINE
-		}
-		// finally, close out the body and table
-		table += "</tbody></table>"
-		c.Data(http.StatusOK, "text/html", []byte(table))
+		c.Data(http.StatusOK, "text/html", rows)
 	})
 
 
