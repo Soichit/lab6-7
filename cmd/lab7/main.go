@@ -118,6 +118,7 @@ func main() {
 		    Image string
 		    Name string
 		}
+		output := make([]string, 0)
         
 
     	// The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
@@ -135,11 +136,12 @@ func main() {
 		        Name: name,
 		    }
 
-		    res1B, _ := json.Marshal(res1D)
+		    res1B := json.Marshal(res1D)
+		    output = append(output, res1B)
         }
 
         //Finally, return your results to the user:
-    	c.JSON(http.StatusOK, gin.H{"result": res1B})
+    	c.JSON(http.StatusOK, gin.H{"result": output})
   })
 
 
