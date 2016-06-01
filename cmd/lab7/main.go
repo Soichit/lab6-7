@@ -80,12 +80,13 @@ func main() {
 		var id int      // <--- EDIT THESE LINES
 		var image string
 		var name string //<--- ^^^^
-		for rows.Next() {
+		var price []uint8
+		for price.Next() {
 			// assign each of them, in order, to the parameters of rows.Scan.
 			// preface each variable with &
-			rows.Scan(&id, &image, &name) // <--- EDIT THIS LINE
+			rows.Scan(&id, &image, &name, &price) // <--- EDIT THIS LINE
 			// can't combine ints and strings in Go. Use strconv.Itoa(int) instead
-			table += "<tr><td>" + strconv.Itoa(id) + "</td><td>" + image + "</td><td>" + name + "</td></tr>" // <--- EDIT THIS LINE
+			table += "<tr><td>" + strconv.Itoa(id) + "</td><td>" + image + "</td><td>" + name + "</td></tr>" + price + "</td></tr>" // <--- EDIT THIS LINE
 		}
 		// finally, close out the body and table
 		table += "</tbody></table>"
@@ -98,7 +99,7 @@ func main() {
 	router.GET("/query2", func(c *gin.Context) {
 		table := "<table class='table'><thead><tr>"
 		// put your query here
-		rows, err := db.Query("SELECT name FROM student WHERE age > 20") // <--- EDIT THIS LINE
+		rows, err := db.Query("SELECT name FROM food WHERE name = \"pizza\"") // <--- EDIT THIS LINE
 		if err != nil {
 			// careful about returning errors to the user!
 			c.AbortWithError(http.StatusInternalServerError, err)
@@ -113,6 +114,8 @@ func main() {
 		}
 		// once you've added all the columns in, close the header
 		table += "</thead><tbody>"
+		var name string
+
 		// columns
 		for rows.Next() {
 			// rows.Scan() // put columns here prefaced with &
