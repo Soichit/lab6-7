@@ -14,14 +14,15 @@ $(function(){
         console.log(data);
         obj = JSON.parse(data);
         console.log(obj);
-        $("#foodName").innerHTML = obj.result[0];
+        $("#foodName").innerHTML = "PIZZA";
         console.log(obj.result[0]);
 
         var txt = '{"employees":[' +
         '{"firstName":"John","lastName":"Doe" },' +
         '{"firstName":"Anna","lastName":"Smith" },' +
         '{"firstName":"Peter","lastName":"Jones" }]}';
-        console.log(txt);
+        obj2 = JSON.parse(txt);
+        console.log(obj2);
 
 
         $("#secondQuery").append(data);
