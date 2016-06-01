@@ -12,8 +12,10 @@ $(function(){
 
     $.get("/query2", function(data){
         console.log(data);
-        //objString = JSON.parse(data);
-        //console.log(objString);
+        objString = JSON.parse(data);
+        console.log(objString);
+        console.log(data.result[0]);
+        //console.log(data);
         /*
         var json = JSON.stringify(eval("(" + objString.result[0] + ")"));
         console.log(json);
