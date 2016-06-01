@@ -116,7 +116,7 @@ func main() {
         type Response1 struct {
 		    Id   int
 		    Image string
-		    name string
+		    Name string
 		}
         
 
