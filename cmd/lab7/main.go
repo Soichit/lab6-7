@@ -128,7 +128,6 @@ func main() {
             array:= [3]string{id, image, name}
             output = append(output, array)
         }
-        */
 
         //Finally, return your results to the user:
     	c.JSON(http.StatusOK, gin.H{"result": output})
