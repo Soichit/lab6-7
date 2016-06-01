@@ -102,9 +102,7 @@ func main() {
             return
         }
 
-        var id int
-		var image string
-		var name string
+        
 
         // if you are simply inserting data you can stop here. I'd suggest returning a JSON object saying "insert successful" or something along those lines.
         // get all the columns. You can do something with them here if you like, such as adding them to a table header, or adding them to the JSON
@@ -118,7 +116,10 @@ func main() {
         output := make([]string, 1)
 
     // The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
-        var returnedColumn1 string
+        var id int
+		var image string
+		var name string
+
         for rows.Next() {
             rows.Scan(&id, &image, &name)
             // VERY important that you store the result back in output
