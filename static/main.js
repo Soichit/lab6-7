@@ -11,11 +11,15 @@ $(function(){
     }, "html")
 
     $.get("/query2", function(data){
-        console.log(data);
+        //console.log(data);
         objString = JSON.parse(data);
-        var json = JSON.stringify(eval("(" + objString.result[0] + ")"));
         console.log(objString);
+
+        var json = JSON.stringify(eval("(" + objString.result[0] + ")"));
         console.log(json);
+        console.log(json.Id);
+        console.log(json.Name);
+
         document.getElementById("foodName").innerHTML = json.Name;
         
 
