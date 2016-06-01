@@ -14,8 +14,8 @@ $(function(){
         console.log(data);
         obj = JSON.parse(data);
         console.log(obj);
-        $("#foodName").innerHTML = obj.result[1].name;
-
+        $("#foodName").innerHTML = obj.result[0].name;
+        console.log(obj.result[0].name);
 
 
         $("#secondQuery").append(data);
