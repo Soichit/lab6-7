@@ -128,7 +128,7 @@ func main() {
         }
         //Finally, return your results to the user:
     	c.JSON(http.StatusOK, gin.H{"result": output})
-  }
+  })
 
 
 
