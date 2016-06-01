@@ -5,12 +5,7 @@ $(function(){
         }
     }, "json")
 
-    $.get("/query1", function(data){
-        //console.log(data);
-        //$("#firstQuery").append(data);
-    }, "html")
-
-    $.get("/query2", function(data){
+    $.get("getFoodStack", function(data){
         console.log(data);
 
         var name = data.result[0][2];
@@ -23,9 +18,5 @@ $(function(){
 
 
     }, "json")
-
-    $.get("/query3", function(data){
-        $("#thirdQuery").append(data);
-    }, "html")
 
 })
