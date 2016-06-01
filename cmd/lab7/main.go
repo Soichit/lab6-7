@@ -119,7 +119,7 @@ func main() {
 	router.GET("/query3", func(c *gin.Context) {
 		table := "<table class='table'><thead><tr>"
 		// put your query here
-		rows, err := db.Query("SELECT * FROM class JOIN student ON student.id = class.person_id WHERE student(age) > (SELECT avg(age) FROM student)") // <--- EDIT THIS LINE
+		rows, err := db.Query("SELECT * FROM food") // <--- EDIT THIS LINE
 		if err != nil {
 			// careful about returning errors to the user!
 			c.AbortWithError(http.StatusInternalServerError, err)
