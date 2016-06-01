@@ -55,10 +55,13 @@ func main() {
 		}
 	})
 
+
+
+
 	router.GET("/query1", func(c *gin.Context) {
 		table := "<table class='table'><thead><tr>"
 		// put your query here
-		rows, err := db.Query("SELECT name FROM student WHERE age > 20") // <--- EDIT THIS LINE
+		rows, err := db.Query("SELECT * FROM food") // <--- EDIT THIS LINE
 		if err != nil {
 			// careful about returning errors to the user!
 			c.AbortWithError(http.StatusInternalServerError, err)
@@ -75,23 +78,28 @@ func main() {
 		table += "</thead><tbody>"
 		// declare all your RETURNED columns here
 		var id int      // <--- EDIT THESE LINES
+		var image string
 		var name string //<--- ^^^^
+		var price int
 		for rows.Next() {
 			// assign each of them, in order, to the parameters of rows.Scan.
 			// preface each variable with &
-			rows.Scan(&id, &name) // <--- EDIT THIS LINE
+			rows.Scan(&id, &image, &name, &price) // <--- EDIT THIS LINE
 			// can't combine ints and strings in Go. Use strconv.Itoa(int) instead
-			table += "<tr><td>" + strconv.Itoa(id) + "</td><td>" + name + "</td></tr>" // <--- EDIT THIS LINE
+			table += "<tr><td>" + strconv.Itoa(id) + "</td><td>" + name + "</td></tr>" + price + "</td></tr>" // <--- EDIT THIS LINE
 		}
 		// finally, close out the body and table
 		table += "</tbody></table>"
 		c.Data(http.StatusOK, "text/html", []byte(table))
 	})
 
+
+
+
 	router.GET("/query2", func(c *gin.Context) {
 		table := "<table class='table'><thead><tr>"
 		// put your query here
-		rows, err := db.Query("SELECT * FROM class") // <--- EDIT THIS LINE
+		rows, err := db.Query("SELECT name FROM student WHERE age > 20") // <--- EDIT THIS LINE
 		if err != nil {
 			// careful about returning errors to the user!
 			c.AbortWithError(http.StatusInternalServerError, err)
@@ -115,6 +123,9 @@ func main() {
 		table += "</tbody></table>"
 		c.Data(http.StatusOK, "text/html", []byte(table))
 	})
+
+
+
 
 	router.GET("/query3", func(c *gin.Context) {
 		table := "<table class='table'><thead><tr>"
