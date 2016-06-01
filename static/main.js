@@ -11,9 +11,9 @@ $(function(){
     }, "html")
 
     $.get("/query2", function(data){
-        //console.log(data);
-        objString = JSON.parse(data);
-        console.log(objString);
+        console.log(data);
+        //objString = JSON.parse(data);
+        //console.log(objString);
         /*
         var json = JSON.stringify(eval("(" + objString.result[0] + ")"));
         console.log(json);
