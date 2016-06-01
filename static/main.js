@@ -14,13 +14,14 @@ $(function(){
         //console.log(data);
         objString = JSON.parse(data);
         console.log(objString);
-
+        /*
         var json = JSON.stringify(eval("(" + objString.result[0] + ")"));
         console.log(json);
         console.log(json.Id);
         console.log(json.Name);
+        */
 
-        document.getElementById("foodName").innerHTML = json.Name;
+        document.getElementById("foodName").innerHTML = "Pizza";
         
 
         var txt = '{"employees":[' +
