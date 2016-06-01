@@ -12,10 +12,11 @@ $(function(){
 
     $.get("/query2", function(data){
         console.log(data);
-        objString = JSON.parse(data);
-        console.log(objString);
+        //objString = JSON.parse(data);
+        //console.log(objString);
         console.log(data.result[0]);
-        //console.log(data);
+        var name = data.result[0][2];
+        console.log(name);
         /*
         var json = JSON.stringify(eval("(" + objString.result[0] + ")"));
         console.log(json);
@@ -23,7 +24,7 @@ $(function(){
         console.log(json.Name);
         */
 
-        document.getElementById("foodName").innerHTML = "Pizza";
+        document.getElementById("foodName").innerHTML = name;
         
 
         var txt = '{"employees":[' +
