@@ -111,11 +111,16 @@ func main() {
             c.AbortWithStatus(http.StatusNoContent)
             return
         }
-        // This will hold an array of all values
-        // makes an array of size 1, storing strings (replace with int or whatever data you want to store)
-        output := make([]string, 1)
+        
 
-    // The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
+        type Response1 struct {
+		    Id   int
+		    Image string
+		    name string
+		}
+        
+
+    	// The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
         var id int
 		var image string
 		var name string
@@ -123,14 +128,18 @@ func main() {
         for rows.Next() {
             rows.Scan(&id, &image, &name)
             // VERY important that you store the result back in output
-            output = append(output, "/TEST/")
-            output = append(output, strconv.Itoa(id))
-            output = append(output, image)
-            output = append(output, "/SANTA/")
-            output = append(output, name)
+
+            res1D := &Response1{
+		        Id: id,
+		        Image: image,
+		        Name: name
+		    }
+
+		    res1B, _ := json.Marshal(res1D)
         }
+
         //Finally, return your results to the user:
-    	c.JSON(http.StatusOK, gin.H{"result": output})
+    	c.JSON(http.StatusOK, gin.H{"result": res1B})
   })
 
 
