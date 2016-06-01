@@ -10,8 +10,6 @@ import (
 	"net/http"
 	"os"
 	"strconv"
-	"encoding/json"
-
 
 	// this allows us to run our web server
 	"github.com/gin-gonic/gin"
@@ -125,7 +123,7 @@ func main() {
         for rows.Next() {
             rows.Scan(&id, &image, &name)
             // VERY important that you store the result back in output
-            array:= [3]string{id, image, name}
+            array:= [3]string{strconv.Itoa(id), image, name}
             output = append(output, array)
         }
 
