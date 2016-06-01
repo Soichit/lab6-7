@@ -12,30 +12,16 @@ $(function(){
 
     $.get("/query2", function(data){
         console.log(data);
-        //objString = JSON.parse(data);
-        //console.log(objString);
-        console.log(data.result[0]);
+
         var name = data.result[0][2];
+        var url = data.result[0][1];
         console.log(name);
-        /*
-        var json = JSON.stringify(eval("(" + objString.result[0] + ")"));
-        console.log(json);
-        console.log(json.Id);
-        console.log(json.Name);
-        */
+
 
         document.getElementById("foodName").innerHTML = name;
-        
-
-        var txt = '{"employees":[' +
-        '{"firstName":"John","lastName":"Doe" },' +
-        '{"firstName":"Anna","lastName":"Smith" },' +
-        '{"firstName":"Peter","lastName":"Jones" }]}';
-        obj2 = JSON.parse(txt);
-        console.log(obj2);
+        document.getElementById("foodImage").src = url;
 
 
-        //$("#secondQuery").append(data);
     }, "json")
 
     $.get("/query3", function(data){
