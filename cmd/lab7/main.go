@@ -102,7 +102,7 @@ func main() {
 			// careful about returning errors to the user!
 			c.AbortWithError(http.StatusInternalServerError, err)
 		}
-		c.Data(http.StatusOK, "text/html", rows)
+		c.Data(http.StatusOK, "text/html", []byte(rows))
 	})
 
 
