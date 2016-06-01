@@ -139,7 +139,7 @@ func main() {
 		    }
 
 		    res1B, _ := json.Marshal(res1D)
-		    output = append(output, []byte(res1B))
+		    output = append(output, byte(res1B))
         }
 
         //Finally, return your results to the user:
