@@ -58,3 +58,10 @@ header {
     width: 150px;
     margin: 20px;
 }
+
+#backButton {
+    float: left;
+    margin-left: 160px;
+    height: 80px;
+    width: 80px;
+}
