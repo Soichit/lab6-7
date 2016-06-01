@@ -80,13 +80,13 @@ func main() {
 		var id int      // <--- EDIT THESE LINES
 		var image string
 		var name string //<--- ^^^^
-		var price []uint8
+		//var price []uint8
 		for rows.Next() {
 			// assign each of them, in order, to the parameters of rows.Scan.
 			// preface each variable with &
-			rows.Scan(&id, &image, &name, &price) // <--- EDIT THIS LINE
+			rows.Scan(&id, &image, &name) // <--- EDIT THIS LINE
 			// can't combine ints and strings in Go. Use strconv.Itoa(int) instead
-			table += "<tr><td>" + strconv.Itoa(id) + "</td><td>" + image + "</td><td>" + name + "</td></tr>" + strconv.Itoa(int(price)) + "</td></tr>" // <--- EDIT THIS LINE
+			table += "<tr><td>" + strconv.Itoa(id) + "</td><td>" + image + "</td><td>" + name + "</td></tr>"// <--- EDIT THIS LINE
 		}
 		// finally, close out the body and table
 		table += "</tbody></table>"
