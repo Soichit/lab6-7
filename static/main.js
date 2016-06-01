@@ -11,6 +11,7 @@ $(function(){
     }, "html")
 
     $.get("/query2", function(data){
+        console.log(data);
         obj = JSON.parse(data);
         console.log(obj);
         //$("#foodName").innerHTML = obj.result[1]....
