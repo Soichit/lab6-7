@@ -12,10 +12,12 @@ $(function(){
 
     $.get("/query2", function(data){
         console.log(data);
-        obj = JSON.parse(data);
-        console.log(obj);
-        $("#foodName").innerHTML = "PIZZA";
-        console.log(obj.result[0]);
+        objString = JSON.parse(data);
+        var json = JSON.stringify(eval("(" + objString + ")"));
+        console.log(objString);
+        console.log(json);
+        document.getElementById("foodName").innerHTML = "PIZZA";
+        
 
         var txt = '{"employees":[' +
         '{"firstName":"John","lastName":"Doe" },' +
@@ -25,7 +27,7 @@ $(function(){
         console.log(obj2);
 
 
-        $("#secondQuery").append(data);
+        //$("#secondQuery").append(data);
     }, "html")
 
     $.get("/query3", function(data){
