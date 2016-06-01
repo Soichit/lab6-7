@@ -120,7 +120,7 @@ func main() {
 		    Image string
 		    Name string
 		}
-		output := make([]byte, 0)
+		output := make(byte, 0)
         
 
     	// The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
