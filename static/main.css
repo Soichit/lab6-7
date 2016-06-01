@@ -36,6 +36,7 @@ header {
 #foodImage {
     height: 470px;
     width: 500px;
+    padding: 5px;
     border-radius: 5%
 }
 
@@ -48,7 +49,8 @@ header {
 }
 
 #youMatched {
-    font-size: 100px;
+    text-align: center;
+    font-size: 60px;
 }
 
 .likes {
