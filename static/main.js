@@ -14,7 +14,7 @@ $(function(){
         console.log(data);
         obj = JSON.parse(data);
         console.log(obj);
-        //$("#foodName").innerHTML = obj.result[1]....
+        $("#foodName").innerHTML = obj.result[1].name;
 
 
 
