@@ -130,7 +130,7 @@ func main() {
             rows.Scan(&id, &image, &name)
             // VERY important that you store the result back in output
 
-            res1D := &Response1{
+            res1D := Response1{
 		        Id: id,
 		        Image: image,
 		        Name: name,
