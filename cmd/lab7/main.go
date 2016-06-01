@@ -123,8 +123,10 @@ func main() {
         for rows.Next() {
             rows.Scan(&id, &image, &name)
             // VERY important that you store the result back in output
+            output = append(output, "/TEST/")
             output = append(output, strconv.Itoa(id))
             output = append(output, image)
+            output = append(output, "/SANTA/")
             output = append(output, name)
         }
         //Finally, return your results to the user:

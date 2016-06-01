@@ -6,12 +6,17 @@ $(function(){
     }, "json")
 
     $.get("/query1", function(data){
-        console.log(data);
-        $("#firstQuery").append(data);
+        //console.log(data);
+        //$("#firstQuery").append(data);
     }, "html")
 
     $.get("/query2", function(data){
-        console.log(data);
+        obj = JSON.parse(data);
+        console.log(obj);
+        //$("#foodName").innerHTML = obj.result[1]....
+
+
+
         $("#secondQuery").append(data);
     }, "html")
 
