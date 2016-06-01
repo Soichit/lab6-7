@@ -10,6 +10,9 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"encoding/json"
+    "fmt"
+
 
 	// this allows us to run our web server
 	"github.com/gin-gonic/gin"
@@ -136,7 +139,7 @@ func main() {
 		        Name: name,
 		    }
 
-		    res1B := json.Marshal(res1D)
+		    res1B, _ := json.Marshal(res1D)
 		    output = append(output, res1B)
         }
 
