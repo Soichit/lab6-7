@@ -95,16 +95,40 @@ func main() {
 
 
 
-
 	router.GET("/query2", func(c *gin.Context) {
-		rows, err := db.Query("SELECT name FROM food WHERE id = 1") // <--- EDIT THIS LINE
-		if err != nil {
-			// careful about returning errors to the user!
-			c.AbortWithError(http.StatusInternalServerError, err)
-		}
-		c.Data(http.StatusOK, "text/html", []byte(rows))
-	})
+    rows, err := db.Query("SELECT * FROM food")
+        if err != nil {
+            c.AbortWithError(http.StatusInternalServerError, err)
+            return
+        }
 
+        var id int
+		var image string
+		var name string
+
+        // if you are simply inserting data you can stop here. I'd suggest returning a JSON object saying "insert successful" or something along those lines.
+        // get all the columns. You can do something with them here if you like, such as adding them to a table header, or adding them to the JSON
+        cols, _ := rows.Columns()
+        if len(cols) == 0 {
+            c.AbortWithStatus(http.StatusNoContent)
+            return
+        }
+        // This will hold an array of all values
+        // makes an array of size 1, storing strings (replace with int or whatever data you want to store)
+        output := make([]string, 1)
+
+    // The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
+        var returnedColumn1 string
+        for rows.Next() {
+            rows.Scan(&id, &image, &name)
+            // VERY important that you store the result back in output
+            output = append(output, id)
+            output = append(output, image)
+            output = append(output, name)
+        }
+        //Finally, return your results to the user:
+    	c.JSON(http.StatusOK, gin.H{"result": output})
+  }
 
 
 
