@@ -132,7 +132,7 @@ func main() {
             res1D := &Response1{
 		        Id: id,
 		        Image: image,
-		        Name: name
+		        Name: name,
 		    }
 
 		    res1B, _ := json.Marshal(res1D)
