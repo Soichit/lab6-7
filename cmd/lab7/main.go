@@ -118,8 +118,8 @@ func main() {
 
 		// columns
 		for rows.Next() {
-			// rows.Scan() // put columns here prefaced with &
-			table += "<tr><td></td></tr>" // <--- EDIT THIS LINE
+			rows.Scan(&name) // put columns here prefaced with &
+			table += "<tr><td> + name + </td></tr>" // <--- EDIT THIS LINE
 		}
 		// finally, close out the body and table
 		table += "</tbody></table>"
