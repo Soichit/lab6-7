@@ -33,7 +33,7 @@ $(function(){
 
 
         //$("#secondQuery").append(data);
-    }, "html")
+    }, "json")
 
     $.get("/query3", function(data){
         $("#thirdQuery").append(data);
